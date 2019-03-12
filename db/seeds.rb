@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 seeding !!
+added seeds
+Item.new
