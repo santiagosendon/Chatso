@@ -6,6 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-seeding !!
-added seeds
-Item.new
+User.create(username: "admin10", name: "Santiago Sendon", email: "admin10@gmail.com",  password_digest: "admin", collectibles: "[]")
