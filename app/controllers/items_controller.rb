@@ -1,39 +1,41 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show,:create, :edit, :update, :destroy]
 
   # GET /items
   # GET /items.json
   def index
     @items = Item.all
+    render json: @items
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    render json: @item
   end
 
   # GET /items/new
-  def new
-    @item = Item.new
-  end
-
-  # GET /items/1/edit
-  def edit
-  end
+  # def new
+  #   @item = Item.new
+  # end
+  #
+  # # GET /items/1/edit
+  # def edit
+  # end
 
   # POST /items
   # POST /items.json
   def create
     @item = Item.new(item_params)
 
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+
+            if @item.save
+
+              render json: @item, status: :created, location: @user
+            else
+
+              render json: @item.errors, status: :unprocessable_entity
+
     end
   end
 
@@ -69,6 +71,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :brand, :category, :price)
+      params.require(:item).permit(:name, :brand,:image, :category, :price)
     end
 end

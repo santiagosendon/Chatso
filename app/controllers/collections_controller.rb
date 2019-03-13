@@ -1,40 +1,41 @@
 class CollectionsController < ApplicationController
-  before_action :set_collection, only: [:show, :edit, :update, :destroy]
+  before_action :set_collection, only: [:show, :edit,:create, :update, :destroy]
 
   # GET /collections
   # GET /collections.json
   def index
     @collections = Collection.all
+    render json: @collections
   end
 
   # GET /collections/1
   # GET /collections/1.json
   def show
+    render json: @collection
   end
 
-  # GET /collections/new
-  def new
-    @collection = Collection.new
-  end
-
-  # GET /collections/1/edit
-  def edit
-  end
+  # # GET /collections/new
+  # def new
+  #   @collection = Collection.new
+  # end
+  #
+  # # GET /collections/1/edit
+  # def edit
+  # end
 
   # POST /collections
   # POST /collections.json
   def create
     @collection = Collection.new(collection_params)
 
-    respond_to do |format|
-      if @collection.save
-        format.html { redirect_to @collection, notice: 'Collection was successfully created.' }
-        format.json { render :show, status: :created, location: @collection }
-      else
-        format.html { render :new }
-        format.json { render json: @collection.errors, status: :unprocessable_entity }
-      end
-    end
+
+          if @collection.save
+
+            render json: @collection, status: :created, location: @collection
+          else
+
+            render json: @user.errors, status: :unprocessable_entity
+          end
   end
 
   # PATCH/PUT /collections/1
