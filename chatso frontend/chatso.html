@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Chatso</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel = "stylesheet" type = "text/css" href = "css/styles.css" />
+    <script defer type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <div id="login-container">
+    <div id="login-image-container">
+    <img id="login-header-img" src="images/chatso.png">
+    </div>
+    <form id="login-form">
+      <span id="login-info-span" ><a id="create-image-button" href="#">Create Profile</a>
+      or Log In:</span><br>
+      <input id="username-input" required type="text" name="username" value="" placeholder="User Name">
+      <br>
+      <input id="image-input" type="text" name="username" value="" placeholder="Profile Picture URL">
+      <input id="login-submit" type="submit" value="Log In">
+      </form>
+      </div>
+    <div class="main_container">
+      <aside class="sidebar">
+        <div class="sidebar_header">
+          <div class="logo_wrapper">
+                  <p><strong>   Logged in as:</strong></p>
+            <!-- <img src="images/chatsosmall.png" alt="logo"> -->
+          </div>
+          <div class="user_details">
+            <div class="user_image_wrapper">
+               <img class="user_image" src="images/magnifier.png" alt="user_profile">
+            </div>
+            <p class="user_display_name">Test</p>
+          </div>
+        </div>
+        <div class="search_bar_wrapper">
+          <form>
+            <input id="chat_search_input" type="text" name="search" placeholder="Start a Talk">
+          </form>
+        </div>
+
+        <ul id="user-chat-list">
+        </ul>
+      </aside>
+      <main class="content">
+        <ul class="messages">
+        </ul>
+        <div class="new_message">
+          <label for="create_message">
+            <textarea name="create_message" placeholder="Select a user to start chatting!" id="create_message"></textarea>
+          </label>
+          <button data-id=null id="message-submit-button">
+            <img src="images/email.svg" alt="send image">
+          </button>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
