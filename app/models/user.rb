@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-validates :username, presence: true
+  validates :name, uniqueness: true
 
-  has_many :collections
-  has_many :items, through: :collections
+  has_many :user_chats
+  has_many :chats, through: :user_chats
+  has_many :messages, through: :chats
+
 end

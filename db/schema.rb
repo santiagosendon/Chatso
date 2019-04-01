@@ -10,36 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_223034) do
+ActiveRecord::Schema.define(version: 2019_01_21_140730) do
 
-  create_table "collections", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "item_id"
-    t.string "name"
-    t.string "brand"
-    t.string "category"
-    t.integer "total"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "chats", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "items", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
+    t.integer "chat_id"
     t.integer "user_id"
-    t.string "name"
-    t.string "brand"
-    t.string "image"
-    t.string "category"
-    t.integer "price"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_chats", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "chat_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-    t.string "collectibles"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

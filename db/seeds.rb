@@ -6,6 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(username: "admin10", name: "Santiago Sendon", email: "admin10@gmail.com",  password_digest: "admin", collectibles: "[]")
-#
-# Item.create(name:"Golden Frieza",brand: "Funko",image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGa-qrtJap5avQlQqtHNFearODhXKkaZh_PniGr-3z8VuFMDT_cw", category: "Vynl Figure", price:"300")
+santi = User.create(name: 'Santiago', url: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b2/b28c1d7f3176c12325025d06b0ad88c7000594a3_full.jpg')
+steph = User.create(name: 'Stephanie', url: 'https://media.musiciansfriend.com/is/image/MMGS7/PR-150-Acoustic-Guitar-Natural/512457000010000-00-500x500.jpg')
+
+Chat.create()
+
+UserChat.create(user_id: 1, chat_id: 1)
+UserChat.create(user_id: 2, chat_id: 1)
+
+Message.create(chat_id: 1, user_id: 2, content: "Testing 123!")
+Message.create(chat_id: 1, user_id: 1, content: "This is another test. I am wrting a long string of text to just to see how it will look on the front end. This might not be long enough, I dunno. We shall wait and see...")
