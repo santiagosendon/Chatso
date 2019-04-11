@@ -17,8 +17,7 @@ let userDisplayName = document.querySelector(".user_display_name")
 let chatSearchInput = document.querySelector("#chat_search_input")
 
 
-// State //
-//-------//
+
 
 const state = {
   users: null,
@@ -288,4 +287,30 @@ renderChatButtonInMenu = (user, chat) => {
       state.current_chat = state.current_user.chats.find(userChat => userChat.id == chatId)
       findOrCreateNewChat(event)
   })
+}
+\
+renderChatInWindow = (id) => {
+  messageList.innerHTML = ""
+    if (state.current_chat) {
+      state.current_chat.messages.forEach(renderMessage)
+      submitMessageButton.dataset.id = state.current_chat.id
+    }
+  submitMessageButton.addEventListener("click", createNewMessage)
+  let currentActiveButton = document.querySelector('#user-chat-list li#active_user')
+    if (currentActiveButton) {
+      currentActiveButton.id = ""
+    }
+  let selectedButton = document.querySelector(`#user-chat-list li[data-id="${state.other_chat_user.id}"]`)
+  selectedButton.id = 'active_user'
+  messageList.scrollTo(0, messageList.scrollHeight)
+  if (state.current_chat) {
+  baseChat = [...state.current_chat.messages]
+  }
+  messageInput.placeholder = `To message ${state.other_chat_user.name}, type your message here then click Send!`
+  refreshIntervalFunction = setInterval(refreshChatWindow, 500)
+}
+
+findOrCreateNewChat = (event) => {
+  event.preventDefault()
+  findUser(event)
 }
